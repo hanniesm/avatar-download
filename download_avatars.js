@@ -1,8 +1,6 @@
 var repoOwner = process.argv.slice(2)[0];
 var repoName = process.argv.slice(2)[1];
 
-// var url =
-
 var request = require('request');
 var fs = require('fs');
 console.log('Welcome to the GitHub Avatar Downloader!');
@@ -12,22 +10,26 @@ var GITHUB_TOKEN = require('./secrets.js')
 
 
 function getRepoContributors(repoOwner, repoName, cb) {
-  var options = {
-    url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
-    headers: {
-      'User-Agent': 'request',
-      'Authorization': `token ${GITHUB_TOKEN.GITHUB_TOKEN}`
-    },
-  };
+  if (repoOwner && repoName) {
+    var options = {
+      url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
+      headers: {
+        'User-Agent': 'request',
+        'Authorization': `token ${GITHUB_TOKEN.GITHUB_TOKEN}`
+      },
+    };
 
-  request(options, function(err, res, body) {
-    var users = JSON.parse(body);
-    for (var each of users) {
-      cb(each.avatar_url, `avatars/${each.login}.jpg`)
-    }
-    // cb(err, body);
-  });
+    request(options, function(err, res, body) {
+      var users = JSON.parse(body);
+      for (var each of users) {
+        cb(each.avatar_url, `avatars/${each.login}.jpg`)
+      }
+      // cb(err, body);
+    });
 
+  } else {
+    console.log("variables not defined");
+  }
 }
 
 
