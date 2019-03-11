@@ -1,10 +1,12 @@
-var owner = process.argv.slice(2)[0];
-var repo = process.argv.slice(2)[1];
+// var owner = process.argv.slice(2)[0];
+// var repo = process.argv.slice(2)[1];
 
 // var url =
 
 var request = require('request');
-var fs = require('fs');
+console.log('Welcome to the GitHub Avatar Downloader!');
+
+/*var fs = require('fs');
 
 // so need it to
 
@@ -19,7 +21,7 @@ request.get('https://avatars2.githubusercontent.com/u/16829276?s=400&va=4')
         console.log('Download complete')
        })
        .pipe(fs.createWriteStream('./avatars'));
-
+*/
 // require `request` and the Node `fs` (filesystem) module
 /*var request = require('request');
 var fs = require('fs');
