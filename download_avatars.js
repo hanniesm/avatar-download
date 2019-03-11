@@ -1,5 +1,5 @@
-// var owner = process.argv.slice(2)[0];
-// var repo = process.argv.slice(2)[1];
+var repoOwner = process.argv.slice(2)[0];
+var repoName = process.argv.slice(2)[1];
 
 // var url =
 
@@ -46,4 +46,4 @@ function downloadImageByURL(url, filePath) {
 
 // downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
 
-getRepoContributors("jquery", "jquery", downloadImageByURL)
+getRepoContributors(repoOwner, repoName, downloadImageByURL)
