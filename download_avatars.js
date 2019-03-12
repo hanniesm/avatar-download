@@ -2,6 +2,7 @@ var repoOwner = process.argv.slice(2)[0];
 var repoName = process.argv.slice(2)[1];
 var request = require('request');
 var fs = require('fs');
+var makeDir = require('make-dir');
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
@@ -20,6 +21,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
 //loops through each user object in body and cb the function
     request(options, function(err, res, body) {
       var users = JSON.parse(body);
+      makeDir('./avatars'); //Creates the avatar folder if it doesn't exist
       for (var each of users) {
         cb(each.avatar_url, `avatars/${each.login}.jpg`)
       }

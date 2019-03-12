@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hanniesm/avatar-download#readme",
   "dependencies": {
+    "make-dir": "^2.1.0",
     "request": "^2.88.0"
   }
 }
